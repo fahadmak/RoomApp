@@ -164,10 +164,12 @@ class Interactive(cmd.Cmd):
                     
     @docopt_cmd 
     def do_add_person(self, args):
-        """Add new person"""
+        """Usage:
+    
+    dojo add_person <first_name> <last_name> (Fellow|Staff) [<wants_space>]"""
         print (spacer)
         name = args["<first_name>"] + " " + args["<last_name>"]
-        wants_space = "Yes" if args.get("<wants_space>") is "Y" else "No"
+        wants_space = "Yes" if args["<wants_space>"] is "Y" else "No"
         if wants_space == "No":
             if args["Staff"]:
                 new_person = Staff(name)
